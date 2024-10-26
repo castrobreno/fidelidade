@@ -1,0 +1,225 @@
+@use "variables/all-variables" as *;
+
+/*
+    Esse arquivo foi gerado usando scss, podendo ser personalizado pelo css, mas recomendamos que seja feito a alteração no scss e compilado para o css, assim evitando possíveis reescritas de código caso seja alterado somente no css e depois no scss
+*/
+
+body{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100dvh;
+    background-color: $color-complement-50;
+    position: relative;
+}
+body::before, body::after{
+    z-index: 0;
+    position: fixed;
+    content: "";
+    width: 800px;
+    height: 800px;
+    border-radius: 100%;
+    filter: blur(150px);
+
+}
+body::before{
+    top: -94px;
+    left: -257px;
+    background-color: rgba($color-primary-300, 0.5);
+}
+body::after{
+    bottom: -94px;
+    right: 100px;
+    background-color: rgba($colors-feedback-primary-300, 0.5);
+}
+
+.main{
+    position: relative;
+    z-index: 2;
+    width: 800px;
+    background-color: rgba($color-complement-50, 0.5);
+    border: $border-20 solid $color-complement-100;
+    border-radius: $corner-65;
+    box-shadow: 0 0 50px 0 rgba($color-complement-600, 0.1);
+    padding: 50px 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+}
+.main-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+.main-header .logomark{
+    width: 150px;
+    object-fit: contain;
+}
+
+.main-login{    //Início main-login
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+
+    .main-login_fieldset{
+        display: flex;
+        flex-direction: column;
+        gap: 16px;
+    }
+    .main-login_title{
+        font: $title-md;
+        color: $color-complement-600;
+        margin-bottom: 16px;
+    }
+
+    .main-login_group{  //Início main-login_group
+        display: flex;
+        flex-direction: column;
+        gap: 10px;
+        position: relative;
+
+        //#######################################
+        .main-login_label{
+            font: $label-lg;
+            color: $color-complement-600;
+        }
+        .main-login_field{
+            width: 100%;
+            font: $paragraph-md;
+            color: $color-complement-600;
+            padding: 16px 10px;
+            border: 0;
+            background-color: $color-complement-100;
+            border: $border-20 solid transparent;
+            transition: all 0.15s ease;
+        }
+        .main-login_field::placeholder{
+            color: $color-complement-600;
+        }
+        .main-login_field:focus{
+            outline: none;
+            border-color: $color-complement-400;
+        }
+        .main-login_field-line{
+            display: flex;
+            position: relative;
+
+            .main-login_field{
+                width: 100%;
+                padding-right: 80px;
+            }
+
+            .main-login_field-icon{
+                position: absolute;
+                right: 10px;
+                top: 50%;
+                transform: translateY(-50%);
+                padding: 10px;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                line-height: 1;
+                color: $color-complement-400;
+                cursor: pointer;
+                transition: all 0.1s ease;
+                -webkit-user-select: none;
+                user-select: none;
+
+                &:hover{
+                    color: $color-complement-600;
+                }
+            }
+        }
+
+    }   //Fim main-login_group
+
+    .main-login_footer{
+        display: flex;
+        align-items: center;
+        justify-content: end;
+
+        .main-login_ps{
+            font: $label-md;
+            color: $colors-feedback-primary-main;
+            text-decoration: none;
+        }
+
+        .main-login_submit{
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            font: $label-lg;
+            gap: 12px;
+            padding: 16px 20px;
+            border-radius: $corner-10;
+            border: none;
+            background-color: $color-primary-300;
+            color: $color-white;
+
+            &:disabled{
+                cursor: auto;
+                background-color: rgba($color-primary-300, 0.5);
+            }
+
+        }
+
+    }
+
+} //Fim main-login
+
+.system-info{
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+.system-info_title{
+    font: $label-lg;
+    color: $color-complement-600;
+}
+.system-info_span{
+    font: $label-sm;
+    color: $color-complement-400;
+}
+
+@media screen and (max-width: 900px)
+{
+    .main{
+        width: 100%;
+        height: 100%;
+        border-radius: 0;
+        padding: 50px 30px;
+        gap: 0;
+
+        .logomark{
+            width: 120px;
+        }
+        
+        .main-login{
+            height: 100%;
+            justify-content: center;
+        }
+        .main-login_footer{
+
+            .main-login_submit{
+                width: 100%;
+            }
+        }
+    }
+}
+
+@media screen and (max-width: 900px) and (max-height: 330px)
+{
+    .main{
+        padding: 20px;
+    }
+    .main-login_fieldset{
+        flex-direction: row !important;
+
+        .row{
+            width: 100%;
+        }
+    }
+}

@@ -1,0 +1,145 @@
+@import "../variables/all-variables";
+.btn-utilities{
+    position        : relative;
+}
+.btn-utilities_button{
+    @include flex-full;
+    background-color: $color-complement-100;
+    border-radius   : 5px;
+    gap             : 10px;
+    padding         : 12px;
+    position        : relative;
+    cursor: pointer;
+}
+.btn-utilities:has(.btn-utilities_picture) .btn-utilities_button{
+      padding: 8px;
+}
+.btn-utilities_picture{
+      border-radius: 5px;
+      height       : 28px;
+      object-fit   : cover;
+      overflow     : hidden;
+      width        : 28px;
+}
+.btn-utilities_icon{
+      align-items    : center;
+      color          : $color-complement-600;
+      display        : flex;
+      font           : $label-xlg;
+      justify-content: center;
+  }
+.btn-utilities:has(.btn-utilities_picture) .btn-utilities_icon{
+      font-size: 18px;
+  }
+.btn-utilities_list{
+      background-color: $color-white;
+      border-radius   : 5px;
+      border          : 0;
+      box-shadow      : 0 0 20px 0 rgba($color-complement-600, 0.2);
+      flex-direction  : column;
+      height          : auto;
+      max-width       : 520px;
+      max-height      : 520px;
+      min-width       : 280px;
+      padding         : 2px;
+      position        : absolute;
+      left            : auto;
+      bottom: auto;
+      right           : 5px;
+      top             : 40px;
+      width           : auto;
+      z-index         : 5;
+      outline: none;
+  }
+  .btn-utilities_header{
+        align-items     : center;
+        display         : flex;
+        justify-content : space-between;
+        padding         : 10px 20px;
+        border-bottom: 1px solid $color-complement-400;
+
+        .btn-utilities_header-title{
+          font: $label-md;
+          color          : $color-complement-600;
+        }
+
+        .btn-utilities_close{
+            cursor: pointer;
+        }
+    }
+
+    .btn-utilities_indexes{
+        padding: 10px;
+        display: flex;
+        flex-direction: column;
+        gap: 5px;
+        list-style: none;
+        color: $color-blue-gray-800;
+    }
+    .btn-utilities_index{
+        padding: 5px;
+        border-radius: 5px;
+    }
+    .btn-utilities_index:has(.btn-utilities_index-link){
+        padding: 0;
+    }
+    .btn-utilities_index-link{
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        text-decoration: none;
+        color: inherit;
+        font: $paragraph-sm;
+        padding: 5px;
+        border-radius: 5px;
+        white-space: nowrap;
+        outline: none;
+        border: 0;
+
+        &:hover{
+            background-color: $color-blue-gray-50;
+        }
+
+        span{
+            font: inherit;
+        }
+        i{
+            font-size: inherit;
+            color: inherit;
+        }
+    }
+
+    .index-item_agent{
+        font-style: italic;
+    }
+
+@media screen and (max-width: 800px){
+    .btn-utilities_list{
+          z-index: 100;
+          border  : 0;
+          border-radius: 0;
+          bottom  : 0;
+          height  : auto;
+          left    : 0;
+          max-height: 100%;
+          position: fixed;
+          right   : 0;
+          top     : 0;
+          width   : 100%;
+          max-width: 100%;
+      }
+    .btn-utilities_header{
+          align-items     : center;
+          display         : flex;
+          justify-content : space-between;
+          padding         : 16px;
+
+          .btn-utilities_header-title{
+            font: $label-md;
+            color          : $color-complement-600;
+          }
+      }
+      .btn-utilities_index-link{
+        padding: 12px;
+      }
+  }

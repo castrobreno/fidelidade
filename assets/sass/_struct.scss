@@ -1,0 +1,57 @@
+$column-qtd: 12;
+$column-base: calc(100% / $column-qtd);
+$spacing: 16px;
+
+.row{
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 12px;
+    padding-inline: -#{$spacing};
+    row-gap: calc($spacing / 2);
+}
+.row > * + *{
+    flex-grow: 1;
+    flex-shrink: 0;
+    flex-basis: auto;
+    margin-inline: calc($spacing / 2);
+}
+.row > *:last-child{
+    margin-inline: 0;
+}
+
+.col{
+    flex-grow: 1;
+    flex-shrink: 1;
+    flex-basis: 0;
+    min-width: fit-content;
+    width: 100%;
+}
+
+@for $i from 1 through $column-qtd{
+    .col-#{$i} {
+        flex-grow: 0;
+        flex-shrink: 0;
+        flex-basis: auto;
+        width: calc(($column-base * #{$i}));
+    }
+}
+
+/* Remove a diferença de margem da largura para não ultrapassar os 100% */
+@scope (.row) {
+    @for $i from 1 through $column-qtd {
+        .col-#{$i} {
+            width: calc(($column-base * #{$i}) - $spacing);
+        }
+    }
+}
+
+@media screen and (max-width: 800px)
+{
+    .row{
+        flex-direction: column;
+
+        & > *{
+            margin: 0;
+        }
+    }
+}

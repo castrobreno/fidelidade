@@ -1,0 +1,241 @@
+@use "../variables/all-variables" as *;
+@use "../struct" as *;
+
+.nav {
+    z-index: 2;
+    background-color: $color-complement-50;
+    grid-area: navbar;
+    position: relative;
+    width: 240px;
+    border-right: 2px solid $color-complement-100;
+    @include select-none;
+    transition: all 0.15s ease;
+    display: flex;
+    flex-direction: column;
+    padding-bottom: 10px;
+    justify-content: stretch;
+    overflow-y: hidden;
+    max-height: 100%;
+}
+// Cabeçalho do navbar com título e botão de colapso
+.nav-header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    border-bottom: 2px solid $color-complement-100;
+    color: $color-complement-600;
+    padding: 12px 20px;
+    gap: 30px;
+    flex: 0 0 auto;
+}
+.nav-header_title{
+    font: $label-lg;
+    color: inherit;
+    transition: all 0.15s ease;
+}
+.nav-header_collapse{
+    background-color: $color-white;
+    border-radius: 100%;
+    width: 24px;
+    height: 24px;
+    @include flex-full;
+    color: inherit;
+    transition: all 0.15s ease;
+    cursor: pointer;
+}
+
+.nav-menu{
+    padding: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+//Estilizando o scroll do nav-menu
+.nav-menu::-webkit-scrollbar {
+    width: 2px;               /* width of the entire scrollbar */
+  }
+  
+.nav-menu::-webkit-scrollbar-track {
+background: transparent;        /* color of the tracking area */
+}
+  
+.nav-menu::-webkit-scrollbar-thumb {
+background-color: $color-complement-100;    /* color of the scroll thumb */
+border-radius: 20px;       /* roundness of the scroll thumb */
+}
+
+.nav-menu_mobile{
+    display: none;
+}
+
+.nav-menu_group{
+    position: relative;
+    color: $color-complement-600;
+    font: $paragraph-md;
+
+}
+.nav-menu_group-link{
+    border-radius: 5px;
+    padding: 8px 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: inherit;
+    font: inherit;
+    cursor: pointer;
+    transition: all 0.15s ease;
+
+    &:hover{
+        background-color: $color-complement-100;
+    }
+
+    span{
+        font: $label-md;
+        white-space: normal;
+    }
+
+    .group-link_icon{
+        display: block;
+    }
+}
+//Botão de dropdown submenu
+.group-link_drop{
+    width: 10px;
+    height: 10px;
+    border-radius: 100%;
+    float: right;
+    @include flex-full;
+}
+.nav-menu_group-link:has(.group-link_drop){
+    justify-content: space-between;
+}
+
+.nav-menu_group-list, .nav-menu_group-list_submenu{
+    padding: 5px;
+    background-color: $color-white;
+    margin-top: 5px;
+    border-radius: 5px;
+    display: none;
+}
+
+
+// Visualização de tablet, ideal para o botão de colapso
+@scope(.nav.tablet-mode){
+    :scope{
+        width: fit-content;
+        overflow: initial;
+    }
+    .nav-menu{
+        overflow: initial;
+    }
+    .nav-header_title{
+        display: none;
+        visibility: hidden;
+    }
+    .nav-header_collapse{
+        transform: rotate(180deg);
+    }
+
+    // Botão dee menu principal com ícone{
+        .nav-menu_group-link:has(.group-link_icon){
+            @include flex-full;
+
+            & span{
+                display: none;
+            }
+            
+            .group-link_icon{
+            }
+        }
+
+    .nav-menu_group-list{
+        z-index: 10;
+        position: absolute;
+        width: max-content;
+        top: 20px;
+        left: 30px;
+    }
+}
+
+@media screen and (max-width: 1024px){
+    .nav-header{
+        display: none;
+        visibility: hidden;
+    }
+}
+
+@media screen and (max-width: 800px){
+    .nav{
+        min-width: 100%;
+        padding: 0;
+        width: fit-content;
+        overflow: initial;
+    }
+
+    .nav-menu{
+        flex-direction: row;
+        align-items: center;
+        justify-content: space-between;
+    }
+    .nav-menu_group:not(:first-of-type){
+        display: none;
+    }
+    .nav-menu_mobile{
+        background-color: $color-complement-100;
+        border-radius: 5px;
+        height: 100%;
+        aspect-ratio: 1 / 1; // Mantém o elemento quadrado
+        @include flex-full;
+    }
+
+    @scope (.nav-menu.opened){
+        :scope{
+            z-index: 200;
+            position: fixed;
+            background-color: $color-complement-50;
+            inset: 0;
+            flex-direction: column;
+            justify-content: start;
+            padding: 20px;
+
+            .search-bar{
+                display: none;
+            }
+
+            .nav-menu_group {
+                display: block; // Garanta que este seletor tenha maior especificidade
+                width: 100%;
+            }
+
+            .nav-menu_group-link{
+                padding: 14px;
+            }
+
+            .nav-menu_mobile{
+                display: none;
+            }
+
+        }
+
+        .nav-menu_close{
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font: $title-md;
+            position: fixed;
+            width: 48px;
+            height: 48px;
+            border-radius: 5px;
+            background-color: $color-white;
+            box-shadow: 0 2px 10px 0 rgba($color-complement-600, 0.2);
+            color: $color-complement-600;
+            font-family: monospace;
+            line-height: 100%;
+            padding: 0;
+            right: 20px;
+            bottom: 20px;
+        }
+    }
+}

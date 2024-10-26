@@ -1,0 +1,63 @@
+.header {
+    align-items: stretch;
+    border-radius: $corner-10;
+    display: flex;
+    gap: 10px;
+    grid-area: header;
+    position: relative;
+}
+
+// Espaço da logomarca
+.header-logomark {
+    background-color: $color-complement-50;
+    border-radius: $corner-10;
+    box-shadow: 0 0 20px 0 rgba($color-complement-600, 0.2);
+    flex: 0 0 auto;
+    padding-inline: 20px;
+    width: max-content;
+    @include flex-full;
+    @include select-none;
+}
+.header-logomark_picture {
+    height: 40px;
+  }
+
+
+.header-utilitiesbar {
+    background-color: $color-complement-50;
+    border-radius: $corner-10;
+    box-shadow: 0 0 20px 0 rgba($color-complement-600, 0.2);
+    display: flex;
+    padding-inline: 10px;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    gap: 10px;
+}
+
+.utilitiesbar_group{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+@media screen and (max-width: 1024px){
+    .header{
+        gap: 0px;
+        border-radius: 0;
+        background-color: $color-complement-50;
+        border-bottom: 2px solid $color-complement-100;
+
+        & > section{
+            box-shadow: none;
+        }
+    }
+}
+@media screen and (max-width: 800px){
+    .header{
+        border-bottom: none;
+    }
+    .header-utilitiesbar{
+        justify-content: end;
+    }
+}

@@ -1,0 +1,34 @@
+@use "variables/all-variables" as *;
+@use "struct" as *;
+@use "components/search-bar.master" as *;
+@use "components/navbar" as *;
+@import "components/header.master";
+@import "components/btn-utilities";
+@import "main.master";
+
+
+body {
+    background-color: $color-complement-50;
+    display: grid;
+    gap: 10px;
+    grid-template-columns: 1fr;
+    grid-template-rows: 65px 1fr;
+    width: 100%;
+    height: 100dvh;
+    padding: 10px;
+
+    grid-template-areas:
+        "header"
+        "main";
+}
+
+@media screen and (max-width: 1024px){
+
+    body{
+        gap: 0;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 800px){
+}

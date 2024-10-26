@@ -1,0 +1,230 @@
+@charset "UTF-8";
+.deg180 {
+  transform: rotate(180deg);
+}
+
+.overlay {
+  z-index: 2;
+  position: fixed;
+  inset: 0 0 0 0;
+  background-color: transparent;
+}
+
+* {
+  box-sizing: border-box;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  -ms-sizing: border-box;
+  -o-box-sizing: border-box;
+}
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-family: "Epilogue", sans-serif;
+  font-size: 14px;
+  font-weight: 400;
+  vertical-align: baseline;
+}
+
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+  display: block;
+}
+
+body {
+  line-height: 1;
+}
+
+ol, ul {
+  list-style: none;
+}
+
+blockquote, q {
+  quotes: none;
+}
+
+blockquote:before, blockquote:after,
+q:before, q:after {
+  content: "";
+  content: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-bottom: 12px;
+  padding-inline: -16px;
+  row-gap: 8px;
+}
+
+.row > * + * {
+  flex-grow: 1;
+  flex-shrink: 0;
+  flex-basis: auto;
+  margin-inline: 8px;
+}
+
+.row > *:last-child {
+  margin-inline: 0;
+}
+
+.col {
+  flex-grow: 1;
+  flex-shrink: 1;
+  flex-basis: 0;
+  min-width: -moz-fit-content;
+  min-width: fit-content;
+  width: 100%;
+}
+
+.col-1 {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  width: calc(8.3333333333% * 1);
+}
+
+.col-2 {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  width: calc(8.3333333333% * 2);
+}
+
+.col-3 {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  width: calc(8.3333333333% * 3);
+}
+
+.col-4 {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  width: calc(8.3333333333% * 4);
+}
+
+.col-5 {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  width: calc(8.3333333333% * 5);
+}
+
+.col-6 {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  width: calc(8.3333333333% * 6);
+}
+
+.col-7 {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  width: calc(8.3333333333% * 7);
+}
+
+.col-8 {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  width: calc(8.3333333333% * 8);
+}
+
+.col-9 {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  width: calc(8.3333333333% * 9);
+}
+
+.col-10 {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  width: calc(8.3333333333% * 10);
+}
+
+.col-11 {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  width: calc(8.3333333333% * 11);
+}
+
+.col-12 {
+  flex-grow: 0;
+  flex-shrink: 0;
+  flex-basis: auto;
+  width: calc(8.3333333333% * 12);
+}
+
+/* Remove a diferença de margem da largura para não ultrapassar os 100% */
+@scope (.row) {
+  .col-1 {
+    width: calc(8.3333333333% * 1 - 16px);
+  }
+  .col-2 {
+    width: calc(8.3333333333% * 2 - 16px);
+  }
+  .col-3 {
+    width: calc(8.3333333333% * 3 - 16px);
+  }
+  .col-4 {
+    width: calc(8.3333333333% * 4 - 16px);
+  }
+  .col-5 {
+    width: calc(8.3333333333% * 5 - 16px);
+  }
+  .col-6 {
+    width: calc(8.3333333333% * 6 - 16px);
+  }
+  .col-7 {
+    width: calc(8.3333333333% * 7 - 16px);
+  }
+  .col-8 {
+    width: calc(8.3333333333% * 8 - 16px);
+  }
+  .col-9 {
+    width: calc(8.3333333333% * 9 - 16px);
+  }
+  .col-10 {
+    width: calc(8.3333333333% * 10 - 16px);
+  }
+  .col-11 {
+    width: calc(8.3333333333% * 11 - 16px);
+  }
+  .col-12 {
+    width: calc(8.3333333333% * 12 - 16px);
+  }
+}
+@media screen and (max-width: 800px) {
+  .row {
+    flex-direction: column;
+  }
+  .row > * {
+    margin: 0;
+  }
+}/*# sourceMappingURL=index.global.css.map */

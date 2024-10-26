@@ -1,0 +1,125 @@
+.main {
+    position: relative;
+    background-color: $color-complement-50;
+    border-radius: $corner-10;
+    box-shadow: 0 0 20px 0 rgba($color-complement-600, 0.2);
+    grid-area: main;
+    position: relative;
+    display: grid;
+    grid-template-areas: "navbar content";
+    grid-template-columns: auto 1fr;
+    grid-template-rows: 1fr;
+    overflow: hidden;
+
+}
+.content{
+    grid-area: content;
+    position: relative;
+    grid-area: content;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    overflow-x: hidden;
+
+    & > *{
+        flex: 0 0 auto;
+    }
+}
+
+//Estilizando o scroll do content
+.content::-webkit-scrollbar {
+    width: 2px;               /* width of the entire scrollbar */
+  }
+  
+.content::-webkit-scrollbar-track {
+background: transparent;        /* color of the tracking area */
+}
+  
+.content::-webkit-scrollbar-thumb {
+background-color: $color-complement-400;    /* color of the scroll thumb */
+border-radius: 20px;       /* roundness of the scroll thumb */
+}
+
+// Background effect
+.content::before, .content::after{
+    z-index: 0;
+    position: fixed;
+    content: "";
+    width: 600px;
+    height: 600px;
+    border-radius: 100%;
+    filter: blur(80px);
+    pointer-events: none;
+
+}
+.content::before{
+    bottom: -350px;
+    left: -100px;
+    background-color: rgba($color-primary-300, 0.5);
+}
+.content::after{
+    bottom: -350px;
+    right: -100px;
+    background-color: rgba($colors-feedback-primary-300, 0.5);
+}
+
+// Blocos de conteúdo
+.content-block{
+    z-index: 2;
+    background-color: $color-complement-50;
+    padding: 10px;
+    border-radius: $corner-15;
+    box-shadow: 0 0 10px 0 rgba($color-complement-600, 0.1);
+
+    .content-block_title{
+        font: $title-xs;
+        color: $color-complement-600;
+    }
+
+}
+
+// Versão tablet
+@media screen and (max-width: 1024px){
+    body{
+        overflow-y: auto;
+    }
+    .main{
+        grid-template-columns: auto 1fr;
+        box-shadow: none;
+    }
+
+    .content{
+        grid-area: content;
+        padding: 10px;
+        height: 100%;
+        flex: 0 0 auto;
+        flex-shrink: 0;
+        padding-bottom: 20px;
+        overflow-y: auto;
+
+        & > *{
+            flex-shrink: 0;
+        }
+        
+    }
+    .content::after, .content::before{
+        position: fixed;
+    }
+}
+@media screen and (max-width: 800px){
+    .main{
+        z-index: 5;
+        grid-template-areas: 
+            "navbar"
+            "content";
+        grid-template-columns: 1fr;
+        grid-template-rows: auto 100%;
+        gap: 0;
+        border-radius: 0;
+        margin-bottom: 10px;
+        height: min-content;
+    }
+    .content{
+        z-index: 1;
+    }
+}
